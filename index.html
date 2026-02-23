@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNAADEB - União de Adolescentes da Assembleia de Deus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+         :root {
+            /* Nova Paleta Sede Santos */
+            --bg-color: #030403;
+            /* Fundo o mais escuro possível */
+            --card-bg: #090c09;
+            --accent-green: #8ff442;
+            /* Verde neon vibrante (pena e tinteiro) */
+            --accent-green-glow: rgba(143, 244, 66, 0.4);
+            --accent-blue: #a3b5c9;
+            /* Azul acinzentado da tipografia */
+            --text-light: #e5e5e5;
+            --text-muted: #6b7a6b;
+            --border-color: #151c15;
+        }
+        /* Reset & Base Orgânica */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        /* Cabeçalho */
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(3, 4, 3, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo img {
+            height: 45px;
+            filter: grayscale(100%) brightness(200%);
+        }
+        /* Logo neutra para não brigar com as cores */
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: var(--accent-green);
+            text-shadow: 0 0 8px var(--accent-green-glow);
+        }
+        /* Área Hero: UNAADEB 2K26 Sede Santos */
+        
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle at center, #0a120a 0%, var(--bg-color) 70%);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .hero h2 {
+            font-size: 4.5rem;
+            color: var(--accent-blue);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            /* Fonte condensada elegante */
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            transform: scaleY(1.3);
+            /* Alongando levemente a fonte para imitar o cartaz */
+            display: inline-block;
+        }
+        /* Contagem Regressiva */
+        
+        .countdown-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .time-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            min-width: 110px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .time-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-green);
+            box-shadow: 0 10px 25px var(--accent-green-glow);
+        }
+        
+        .time-box span {
+            display: block;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--accent-green);
+            text-shadow: 0 0 15px var(--accent-green-glow);
+        }
+        
+        .time-box p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-top: 5px;
+        }
+        /* Links Rápidos */
+        
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 80px 0 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .quick-link {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .quick-link:hover {
+            transform: translateY(-10px);
+            color: var(--accent-green);
+        }
+        
+        .quick-link div.icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-green);
+            margin: 0 auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent-green);
+            background-color: var(--card-bg);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-green-glow);
+        }
+        
+        .quick-link:hover div.icon-circle {
+            background-color: var(--accent-green);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px var(--accent-green-glow);
+        }
+        
+        .quick-link span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        /* Galeria de Fotos */
+        
+        .gallery-section {
+            padding: 0 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title span {
+            color: var(--accent-green);
+            text-shadow: 0 0 8px var(--accent-green-glow);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            filter: brightness(0.6) grayscale(50%) sepia(20%) hue-rotate(60deg);
+            /* Dando um tom esverdeado nas fotos */
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1) grayscale(0%) sepia(0%);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px 20px;
+            background: linear-gradient(to top, rgba(3, 4, 3, 1), transparent);
+            transition: bottom 0.4s ease;
+            text-align: center;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            bottom: 0;
+        }
+        /* Rodapé */
+        
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-green);
+            transform: scale(1.2);
+            text-shadow: 0 0 10px var(--accent-green-glow);
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        /* Responsividade */
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .hero h2 {
+                font-size: 3rem;
+                transform: scaleY(1.1);
+            }
+            .time-box {
+                min-width: 80px;
+                padding: 15px;
+            }
+            .time-box span {
+                font-size: 2rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="/"><img src="https://unaadeb.com.br/images/Logo%20-%20Marca%20UNAADEB%202025%2001%20p.png" alt="Logo UNAADEB"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Quem Somos</a></li>
+                <li><a href="#">Congresso</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">For You</a></li>
+                <li><a href="#">Contatos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>UNAADEB 2K26</h1>
+            <br>
+            <h2>SEDE SANTOS</h2>
+
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; letter-spacing: 1px;">
+                Prepare-se para o maior congresso da nossa geração. Faltam apenas:
+            </p>
+
+            <div class="countdown-wrapper" id="countdown">
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <p>Dias</p>
+                </div>
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <p>Horas</p>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">00</span>
+                    <p>Minutos</p>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">00</span>
+                    <p>Segundos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-links">
+            <a href="/congresso" class="quick-link">
+                <div class="icon-circle"><i class="fas fa-fire"></i></div>
+                <span>CONGRESSO</span>
+            </a>
+            <a href="/vocal" class="quick-link">
+                <div class="icon-circle"><i class="fas fa-microphone-alt"></i></div>
+                <span>VOCAL</span>
+            </a>
+            <a href="/imersao" class="quick-link">
+                <div class="icon-circle"><i class="fas fa-water"></i></div>
+                <span>IMERSÃO</span>
+            </a>
+            <a href="/videos" class="quick-link">
+                <div class="icon-circle"><i class="fab fa-youtube"></i></div>
+                <span>VÍDEOS</span>
+            </a>
+        </section>
+
+        <section class="gallery-section">
+            <h3 class="section-title">Nossos <span>Conteúdos</span></h3>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/2026/01/09/seletivavocalunaadeb2026.jpg" alt="Seleção Vocal">
+                    <div class="gallery-caption">Seleção Vocal 2026</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/2026/01/09/AgendaUNAADEB2026Jan.jpg" alt="Agenda">
+                    <div class="gallery-caption">Agenda 2026</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/2025/06/14/Imagem%20do%20WhatsApp%20de%202025-06-05%20%C3%A0(s)%2013.14.47_02b83be9.jpg" alt="UNAADEB 2K25">
+                    <div class="gallery-caption">Memórias 2K25</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/2025/03/10/seletivavocalunaadeb2025.jpg" alt="Seletiva Anterior">
+                    <div class="gallery-caption">Eventos Passados</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/4d8c9898b5bb88437f053c8b957f47f3.jpg" alt="Artigo For Teens">
+                    <div class="gallery-caption">For Teens</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/2024/05/27/imersao2024d.jpg" alt="Imersão">
+                    <div class="gallery-caption">Imersão Teens</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/339a0e1449b6b4062056bc300d87e893.jpg" alt="Cristão Marombeiro">
+                    <div class="gallery-caption">Artigos & Dicas</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://unaadeb.com.br/images/2023/06/09/cartaz-oficial-unaadeb_2023-f2.jpg" alt="Congresso Antigo">
+                    <div class="gallery-caption">Galeria Histórica</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/unaadeb.brasilia" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/unaadeb.oficial/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.youtube.com/c/unaadebbrasilia" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="footer-text">© 2026 UNAADEB. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Lógica da Contagem Regressiva
+        // Ajuste a data aqui: Ano, Mês (0-11, então 5 = Junho), Dia, Hora, Minuto
+        const congressDate = new Date(2026, 5, 12, 19, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = congressDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "<div class='time-box'><span style='font-size: 1.5rem;'>O CONGRESSO COMEÇOU!</span></div>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Adiciona um zero à esquerda se for menor que 10
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        // Atualiza a cada 1 segundo
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+
+</html>
