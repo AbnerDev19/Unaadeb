@@ -1,0 +1,135 @@
+:root {
+    --bg-dark: #050705;
+    --accent-color: #8fe388;
+    --text-main: #ffffff;
+    --card-bg: #0d120d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+}
+
+
+/* Cabeçalho da Galeria */
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: var(--card-bg);
+    border-bottom: 1px solid #1a241a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.back-btn {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn:hover {
+    color: var(--accent-color);
+}
+
+.gallery-header h2 span {
+    color: var(--accent-color);
+}
+
+
+/* Layout Pinterest (Masonry) */
+
+.masonry-grid {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 40px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #1a241a;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+
+/* Lightbox */
+
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 4px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--accent-color);
+}
+
+
+/* Responsivo Galeria */
+
+@media (max-width: 900px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .masonry-grid {
+        column-count: 1;
+    }
+    .gallery-header h2 {
+        font-size: 1.2rem;
+    }
+}

@@ -4,41 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria Setor 5 - UNAADEB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Galeria - UNAADEB 2K26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="galeria.css"> </head>
 
 <body>
 
-    <header class="top-nav">
-        <nav>
-            <ul class="nav-links">
-                <li><a href="index.html"><i class="fas fa-arrow-left"></i> Voltar ao Início</a></li>
-            </ul>
-        </nav>
+    <header class="gallery-header">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <h2>Galeria <span>Setor 5</span></h2>
     </header>
 
-    <main>
-        <div class="section-header" style="margin-top: 60px;">
-            <h3>Galeria <span>Setor 5</span></h3>
-            <p>Nossos melhores momentos registrados.</p>
+    <main class="masonry-grid">
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="https://unaadeb.com.br/images/2026/01/09/seletivavocalunaadeb2026.jpg" alt="Vocal">
         </div>
-
-        <div class="masonry-grid">
-            <div class="masonry-item">
-                <img src="https://unaadeb.com.br/images/2026/01/09/seletivavocalunaadeb2026.jpg" alt="Foto">
-            </div>
-            <div class="masonry-item">
-                <img src="https://unaadeb.com.br/images/2024/05/27/imersao2024d.jpg" alt="Foto">
-            </div>
-            <div class="masonry-item">
-                <img src="https://unaadeb.com.br/images/2026/01/09/AgendaUNAADEB2026Jan.jpg" alt="Foto">
-            </div>
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="https://unaadeb.com.br/images/2024/05/27/imersao2024d.jpg" alt="Imersão">
+        </div>
+        <div class="masonry-item" onclick="openLightbox(this)">
+            <img src="https://unaadeb.com.br/images/2026/01/09/AgendaUNAADEB2026Jan.jpg" alt="Agenda">
         </div>
     </main>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">×</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="galeria.js"></script>
 </body>
 
 </html>
