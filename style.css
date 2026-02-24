@@ -1,11 +1,15 @@
 :root {
     --bg-dark: #1a1e17;
-    --card-bg: rgba(30, 35, 26, 0.7);
+    --card-bg: rgba(30, 35, 26, 0.4);
+    /* Levemente mais transparente para o efeito Liquid Glass */
     --accent-color: #cbdc9f;
     --accent-hover: #e6ead5;
     --text-main: #ffffff;
     --text-muted: #d1d5cb;
-    --border-soft: rgba(203, 220, 159, 0.25);
+    /* Variáveis do Liquid Glass */
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-highlight: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     --radius-main: 24px;
 }
 
@@ -13,17 +17,35 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
+
+
+/* 1. CORREÇÃO DEFINITIVA DO FUNDO "MANCHADO" NO MOBILE */
 
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+/* A imagem fica em um pseudo-elemento fixo. Isso impede o bug de blur do iOS/Safari */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: linear-gradient(rgba(20, 25, 18, 0.65), rgba(20, 25, 18, 0.75)), url("cartaz.jpeg");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    z-index: -1;
 }
 
 
@@ -37,6 +59,7 @@ h1,
 }
 
 .bio-container {
+    width: 100%;
     max-width: 480px;
     margin: 0 auto;
     padding: 30px 20px;
@@ -48,34 +71,38 @@ h1,
 .hero-section {
     text-align: center;
     margin-bottom: 40px;
+    width: 100%;
 }
 
 
-/* 1. CORREÇÃO DA LOGO: Muito menor para destacar o texto */
+/* 2. LOGO MUITO MENOR E PROPORCIONAL */
 
 .logo-container img {
-    height: 35px;
-    /* Reduzido de 55px */
-    margin-bottom: 12px;
+    height: 24px;
+    max-width: 100%;
+    margin-bottom: 15px;
     opacity: 0.9;
+    object-fit: contain;
 }
 
 .title-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 55px;
-    /* Previne pulos de layout */
+    height: auto;
+    min-height: 55px;
     margin-bottom: 5px;
+    width: 100%;
 }
 
+
+/* Tipografia Fluida para não quebrar no 375px */
+
 #typing-title {
-    font-size: 2.6rem;
-    /* Reduzido levemente para caber melhor */
+    font-size: clamp(1.8rem, 7.5vw, 2.6rem);
     letter-spacing: 1px;
     display: inline-block;
     white-space: nowrap;
-    /* Impede de quebrar linha no meio da digitação */
 }
 
 .highlight-text {
@@ -83,7 +110,7 @@ h1,
 }
 
 .cursor {
-    font-size: 2.6rem;
+    font-size: clamp(1.8rem, 7.5vw, 2.6rem);
     color: var(--accent-color);
     animation: blink 0.8s infinite;
     margin-left: 2px;
@@ -101,7 +128,7 @@ h1,
 
 .hero-section h2 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.85rem;
+    font-size: clamp(0.7rem, 3vw, 0.85rem);
     color: var(--text-muted);
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -109,32 +136,44 @@ h1,
 }
 
 
+/* =========================================
+   3. EFEITO LIQUID GLASS (CAIXAS, BOTÕES E CARDS)
+   ========================================= */
+
+.time-box,
+.bio-btn,
+.info-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    /* Reflexos de luz nas bordas para dar aspecto de vidro molhado */
+    border-top: 1px solid var(--glass-highlight);
+    border-left: 1px solid var(--glass-highlight);
+    box-shadow: var(--glass-shadow);
+}
+
+
 /* Contagem Regressiva em Cascata */
 
 .countdown-wrapper {
     display: flex;
-    justify-content: center;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 6px;
     margin-bottom: 35px;
     width: 100%;
 }
 
 .time-box {
-    background: var(--card-bg);
-    border: 1px solid var(--border-soft);
-    padding: 12px 5px;
-    border-radius: 16px;
     flex: 1;
+    min-width: 0;
+    padding: 12px 2px;
+    border-radius: 16px;
     text-align: center;
-    backdrop-filter: blur(10px);
-    /* Animação inicial oculta */
     opacity: 0;
     transform: translateY(20px) scale(0.9);
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
-
-
-/* Tempos para aparecerem um por um */
 
 .stagger-1 {
     animation-delay: 1.5s;
@@ -160,7 +199,7 @@ h1,
 }
 
 .time-box span {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 5.5vw, 1.8rem);
     color: var(--accent-color);
     display: block;
     line-height: 1;
@@ -169,7 +208,7 @@ h1,
 
 .time-box p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.6rem;
+    font-size: clamp(0.55rem, 2vw, 0.6rem);
     text-transform: uppercase;
     color: var(--text-muted);
     letter-spacing: 1px;
@@ -182,34 +221,39 @@ h1,
     display: flex;
     flex-direction: column;
     gap: 15px;
+    width: 100%;
 }
 
 .bio-btn {
-    background: var(--card-bg);
     color: var(--text-main);
     padding: 18px;
     border-radius: 18px;
     font-weight: 600;
     text-align: center;
-    border: 1px solid var(--border-soft);
-    backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
 }
 
 .bio-btn:hover {
-    background: rgba(203, 220, 159, 0.2);
+    background: rgba(203, 220, 159, 0.15);
     transform: translateY(-2px);
     border-color: var(--accent-color);
 }
 
+
+/* O botão primário mantém preenchimento sólido, então removemos o blur dele para destacar */
+
 .bio-btn.primary {
     background: var(--accent-color);
     color: #1a1e17;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border: none;
+    box-shadow: 0 4px 15px rgba(203, 220, 159, 0.3);
 }
 
 .bio-btn.primary:hover {
@@ -227,11 +271,10 @@ h1,
 .shirt-img {
     width: 100%;
     max-width: 300px;
-    /* Evita que a blusa fique gigante em telas maiores */
     border-radius: 16px;
-    border: 1px solid var(--border-soft);
+    border: 1px solid var(--glass-border);
     margin-bottom: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .shirt-btn {
@@ -242,12 +285,9 @@ h1,
 /* Cards de Info Gerais */
 
 .info-card {
-    background: var(--card-bg);
     padding: 25px;
     border-radius: var(--radius-main);
-    border: 1px solid var(--border-soft);
     margin-top: 20px;
-    backdrop-filter: blur(10px);
 }
 
 .info-card h4 {
@@ -270,7 +310,7 @@ h1,
     text-align: center;
     margin-top: 50px;
     padding-top: 30px;
-    border-top: 1px solid var(--border-soft);
+    border-top: 1px solid var(--glass-border);
 }
 
 .social-links {
@@ -310,55 +350,22 @@ h1,
 
 
 /* =========================================
-   2. CORREÇÃO DA RESPONSIVIDADE (MOBILE)
+   4. RESPONSIVIDADE COMPLETA (375px e menores)
    ========================================= */
 
 @media (max-width: 480px) {
     .bio-container {
         padding: 20px 15px;
     }
-    /* Ajusta o título para não quebrar no celular */
-    .title-wrapper {
-        height: 45px;
-    }
-    #typing-title,
-    .cursor {
-        font-size: 2rem;
-    }
     .hero-section h2 {
-        font-size: 0.75rem;
         margin-bottom: 25px;
     }
-    /* Ajuste fino nas 4 caixas do tempo para caberem lado a lado */
-    .countdown-wrapper {
-        gap: 5px;
-    }
     .time-box {
-        padding: 10px 2px;
+        padding: 10px 0;
         border-radius: 12px;
     }
-    .time-box span {
-        font-size: 1.3rem;
-    }
-    .time-box p {
-        font-size: 0.55rem;
-    }
-    /* Deixa os botões com um tamanho mais amigável ao dedo */
     .bio-btn {
         padding: 16px;
         font-size: 0.95rem;
-    }
-}
-
-
-/* Celulares muito pequenos (ex: iPhone SE) */
-
-@media (max-width: 360px) {
-    #typing-title,
-    .cursor {
-        font-size: 1.8rem;
-    }
-    .time-box span {
-        font-size: 1.1rem;
     }
 }
