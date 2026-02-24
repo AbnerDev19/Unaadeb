@@ -55,3 +55,18 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+// 4. Lógica de Abrir/Fechar a Lista de Igrejas
+const btnIgrejas = document.getElementById('btn-igrejas');
+const listaIgrejas = document.getElementById('lista-igrejas');
+
+if (btnIgrejas && listaIgrejas) {
+    btnIgrejas.addEventListener('click', () => {
+        if (listaIgrejas.classList.contains('igrejas-hidden')) {
+            listaIgrejas.classList.remove('igrejas-hidden');
+            listaIgrejas.classList.add('igrejas-visible');
+        } else {
+            listaIgrejas.classList.remove('igrejas-visible');
+            listaIgrejas.classList.add('igrejas-hidden');
+        }
+    });
+}

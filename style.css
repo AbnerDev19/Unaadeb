@@ -369,3 +369,135 @@ h1,
         font-size: 0.95rem;
     }
 }
+/* =========================================
+   5. SEÇÃO IGREJAS & AJUSTES DE TEXTO
+   ========================================= */
+
+.setor-title {
+    color: var(--accent-color) !important;
+    font-size: clamp(1rem, 4vw, 1.2rem) !important;
+    margin-bottom: 2px !important;
+    letter-spacing: 6px !important;
+    font-weight: 700;
+}
+
+.church-card {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.church-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.church-address {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+}
+
+.church-address i {
+    color: var(--accent-color);
+    margin-top: 3px;
+}
+
+.church-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.church-btn {
+    padding: 14px;
+    font-size: 0.9rem;
+    border-radius: 14px;
+}
+
+/* Estilo para Botões Vazados (Outline) */
+.bio-btn.outline {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.bio-btn.outline:hover {
+    background: rgba(203, 220, 159, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Coloca os botões lado a lado em telas que não são tão pequenas */
+@media (min-width: 380px) {
+    .church-actions {
+        flex-direction: row;
+    }
+    .church-btn {
+        flex: 1;
+    }
+}
+/* =========================================
+   5. LISTA DE IGREJAS MINIMALISTA (DROPDOWN)
+   ========================================= */
+
+.igrejas-hidden {
+    display: none;
+}
+
+.igrejas-visible {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1);
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.min-church {
+    margin-top: 0; /* Remove a margem padrão do info-card */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.min-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    text-transform: none; /* Deixa o texto mais natural */
+    letter-spacing: 0;
+}
+
+.min-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.min-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.min-actions a {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    transition: 0.3s ease;
+    padding: 5px;
+}
+
+.min-actions a:hover {
+    color: var(--text-main);
+    transform: scale(1.1);
+}
