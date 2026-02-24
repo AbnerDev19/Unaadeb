@@ -1,7 +1,6 @@
 :root {
     --bg-dark: #1a1e17;
     --card-bg: rgba(30, 35, 26, 0.7);
-    /* Mais transparente para ver o fundo */
     --accent-color: #cbdc9f;
     --accent-hover: #e6ead5;
     --text-main: #ffffff;
@@ -21,7 +20,6 @@ body {
     color: var(--text-main);
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    /* Fundo clareado para a imagem aparecer mais */
     background: linear-gradient(rgba(20, 25, 18, 0.65), rgba(20, 25, 18, 0.75)), url("cartaz.jpeg");
     background-size: cover;
     background-position: center;
@@ -52,19 +50,32 @@ h1,
     margin-bottom: 40px;
 }
 
+
+/* 1. CORREÇÃO DA LOGO: Muito menor para destacar o texto */
+
+.logo-container img {
+    height: 35px;
+    /* Reduzido de 55px */
+    margin-bottom: 12px;
+    opacity: 0.9;
+}
+
 .title-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 55px;
     /* Previne pulos de layout */
     margin-bottom: 5px;
 }
 
 #typing-title {
-    font-size: 3rem;
+    font-size: 2.6rem;
+    /* Reduzido levemente para caber melhor */
     letter-spacing: 1px;
     display: inline-block;
+    white-space: nowrap;
+    /* Impede de quebrar linha no meio da digitação */
 }
 
 .highlight-text {
@@ -72,7 +83,7 @@ h1,
 }
 
 .cursor {
-    font-size: 3rem;
+    font-size: 2.6rem;
     color: var(--accent-color);
     animation: blink 0.8s infinite;
     margin-left: 2px;
@@ -104,8 +115,8 @@ h1,
     display: flex;
     justify-content: center;
     gap: 8px;
-    /* Reduzido para caber 4 caixas */
     margin-bottom: 35px;
+    width: 100%;
 }
 
 .time-box {
@@ -215,6 +226,8 @@ h1,
 
 .shirt-img {
     width: 100%;
+    max-width: 300px;
+    /* Evita que a blusa fique gigante em telas maiores */
     border-radius: 16px;
     border: 1px solid var(--border-soft);
     margin-bottom: 15px;
@@ -296,13 +309,56 @@ h1,
 }
 
 
-/* Mobile extra pequeno */
+/* =========================================
+   2. CORREÇÃO DA RESPONSIVIDADE (MOBILE)
+   ========================================= */
 
-@media (max-width: 380px) {
-    #typing-title {
-        font-size: 2.5rem;
+@media (max-width: 480px) {
+    .bio-container {
+        padding: 20px 15px;
+    }
+    /* Ajusta o título para não quebrar no celular */
+    .title-wrapper {
+        height: 45px;
+    }
+    #typing-title,
+    .cursor {
+        font-size: 2rem;
+    }
+    .hero-section h2 {
+        font-size: 0.75rem;
+        margin-bottom: 25px;
+    }
+    /* Ajuste fino nas 4 caixas do tempo para caberem lado a lado */
+    .countdown-wrapper {
+        gap: 5px;
+    }
+    .time-box {
+        padding: 10px 2px;
+        border-radius: 12px;
     }
     .time-box span {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+    }
+    .time-box p {
+        font-size: 0.55rem;
+    }
+    /* Deixa os botões com um tamanho mais amigável ao dedo */
+    .bio-btn {
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+}
+
+
+/* Celulares muito pequenos (ex: iPhone SE) */
+
+@media (max-width: 360px) {
+    #typing-title,
+    .cursor {
+        font-size: 1.8rem;
+    }
+    .time-box span {
+        font-size: 1.1rem;
     }
 }
