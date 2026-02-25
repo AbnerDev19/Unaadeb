@@ -1,5 +1,4 @@
-// 1. Lógica da Contagem Regressiva (Com Segundos)
-const congressDate = new Date(2026, 5, 12, 19, 0, 0).getTime();
+const congressDate = new Date(2026, 5, 4, 19, 0, 0).getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
