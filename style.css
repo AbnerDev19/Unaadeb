@@ -44,7 +44,7 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(20, 25, 18, 0.65), rgba(20, 25, 18, 0.75)), url("TEMA_VERSO.png");
+    background: linear-gradient(rgba(20, 25, 18, 0.65), rgba(20, 25, 18, 0.75)), url("fotos/TEMA_VERSO.png");
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -653,4 +653,62 @@ h1,
 .glass-input option {
     background: var(--bg-dark);
     color: var(--text-main);
+}
+/* =========================================
+   CARROSSEL DA CAMISA (SWIPE)
+   ========================================= */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Mantém o tamanho da sua arte original */
+    margin: 0 auto 20px auto;
+}
+
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Esconde barra no Firefox */
+    -ms-overflow-style: none; /* Esconde barra no Edge */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Esconde barra no Chrome/Safari */
+.carousel-track::-webkit-scrollbar {
+    display: none; 
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    border: 1px solid var(--glass-border);
+    object-fit: cover;
+}
+
+/* Bolinhas (Indicators) */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.carousel-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0.5;
+}
+
+.carousel-indicator.active {
+    background-color: var(--text-main);
+    transform: scale(1.3);
+    opacity: 1;
 }

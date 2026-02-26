@@ -120,3 +120,37 @@ if (btnComprarCamisa && modalCamisa) {
         formCamisa.reset();
     });
 }
+// =========================================
+// 7. Lógica do Carrossel Arrastável (Camisas)
+// =========================================
+const track = document.getElementById('shirt-track');
+const indicators = document.querySelectorAll('.carousel-indicator');
+
+if (track && indicators.length > 0) {
+    // Atualiza a bolinha ativa conforme o usuário arrasta (scroll)
+    track.addEventListener('scroll', () => {
+        const scrollLeft = track.scrollLeft;
+        const itemWidth = track.clientWidth;
+        const index = Math.round(scrollLeft / itemWidth);
+
+        indicators.forEach((ind, i) => {
+            if (i === index) {
+                ind.classList.add('active');
+            } else {
+                ind.classList.remove('active');
+            }
+        });
+    });
+
+    // Permite clicar na bolinha para ir até a foto correspondente
+    indicators.forEach(indicator => {
+        indicator.addEventListener('click', (e) => {
+            const index = parseInt(e.target.getAttribute('data-index'));
+            const itemWidth = track.clientWidth;
+            track.scrollTo({
+                left: index * itemWidth,
+                behavior: 'smooth'
+            });
+        });
+    });
+}
