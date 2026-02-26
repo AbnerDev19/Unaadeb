@@ -657,11 +657,18 @@ h1,
 /* =========================================
    CARROSSEL DA CAMISA (SWIPE)
    ========================================= */
+/* =========================================
+   CARROSSEL DA CAMISA (SWIPE CORRIGIDO)
+   ========================================= */
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 300px; /* Mantém o tamanho da sua arte original */
     margin: 0 auto 20px auto;
+    /* Adicionamos fundo escuro para combinar com o seu print de referência */
+    background-color: var(--bg-dark); 
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    padding: 10px;
 }
 
 .carousel-track {
@@ -670,13 +677,12 @@ h1,
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Esconde barra no Firefox */
-    -ms-overflow-style: none; /* Esconde barra no Edge */
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Edge */
+    border-radius: 12px; /* Borda interna para a foto não vazar */
 }
 
-/* Esconde barra no Chrome/Safari */
+/* Esconde a barra de rolagem no Chrome/Safari */
 .carousel-track::-webkit-scrollbar {
     display: none; 
 }
@@ -684,17 +690,20 @@ h1,
 .carousel-item {
     flex: 0 0 100%;
     width: 100%;
+    height: 320px; /* ALTURA FIXA: O segredo para não bugar no celular */
     scroll-snap-align: center;
-    border: 1px solid var(--glass-border);
-    object-fit: cover;
+    object-fit: cover; /* Faz a foto preencher o espaço sem distorcer */
+    object-position: center;
+    border-radius: 12px;
 }
 
 /* Bolinhas (Indicators) */
 .carousel-indicators {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
     margin-top: 15px;
+    padding-bottom: 5px;
 }
 
 .carousel-indicator {
@@ -704,7 +713,7 @@ h1,
     background-color: var(--text-muted);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .carousel-indicator.active {
