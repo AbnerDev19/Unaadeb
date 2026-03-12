@@ -721,3 +721,9 @@ h1,
     transform: scale(1.3);
     opacity: 1;
 }
+/* Remove a seta padrão dos campos select */
+select.glass-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

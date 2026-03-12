@@ -79,7 +79,7 @@ const closeModal = document.getElementById('close-modal');
 const formCamisa = document.getElementById('form-camisa');
 
 // ATENÇÃO: COLOQUE O NÚMERO AQUI (DDI + DDD + Numero. Ex: 5561999999999)
-const numeroLider = "5561900000000"; 
+const numeroLider = "5561981277037"; 
 
 if (btnComprarCamisa && modalCamisa) {
     // Abrir Modal
